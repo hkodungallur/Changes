@@ -1,0 +1,14 @@
+{{extend 'layout.html'}}
+<h4> SHERLOCK DAILY COMMIT LOG </h4>
+
+<form>
+<INPUT type="date" id="q" name ="q"/>
+<INPUT type="button" value="Changelog"
+       onclick="ajax('{{=URL('get_log')}}',['q'],'target');"/>
+<INPUT type="button" value="Diff From Prvs Day"
+       onclick="ajax('{{=URL('get_diff')}}',['q'],'target');"/>
+</form>
+<br/>
+<pre>
+<div id="target"></div>
+</pre>
