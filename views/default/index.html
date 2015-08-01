@@ -2,7 +2,7 @@
 <h4> SHERLOCK DAILY COMMIT LOG </h4>
 
 <form>
-<INPUT type="date" id="q" name ="q"/>
+<INPUT type="string" id="q" name ="q" class="date"/>
 <INPUT type="button" value="Changelog"
        onclick="ajax('{{=URL('get_log')}}',['q'],'target');"/>
 <INPUT type="button" value="Diff From Prvs Day"
