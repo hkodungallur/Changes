@@ -1,12 +1,17 @@
 {{extend 'layout.html'}}
-<h4> SHERLOCK DAILY COMMIT LOG </h4>
+<h4> DAILY COMMIT LOG </h4>
 
 <form>
-<INPUT type="string" id="q" name ="q" class="date"/>
-<INPUT type="button" value="Changelog"
-       onclick="ajax('{{=URL('get_log')}}',['q'],'target');"/>
-<INPUT type="button" value="Diff From Prvs Day"
-       onclick="ajax('{{=URL('get_diff')}}',['q'],'target');"/>
+Branch: 
+  <SELECT name="branch" id="branch">
+    <!-- <option value="4.1.0">4.1.0</option> -->
+    <!-- <option value="4.2.0">4.2.0</option> -->
+    <option value="4.5.0" SELECTED>4.5.0 (Watson)</option>
+  </SELECT> </br></br>
+From build#: <INPUT type="string" id="frm" name="frm"/></br></br>
+To build#  : <INPUT type="string" id="to" name="to"/></br></br>
+<INPUT type="button" value="Get"
+       onclick="ajax('{{=URL('get_log')}}',['branch', 'frm', 'to'], 'target');"/>
 </form>
 <br/>
 <pre>

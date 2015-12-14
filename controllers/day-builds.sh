@@ -12,15 +12,15 @@ day=$1
 branch=${2-sherlock-4.0.0}
 cd build-team-manifests
 git checkout $branch > /dev/null 2>&1
-lastofday=`git log --before "$day 23:59:59 PDT" -1 --format=%H`
-priorday=`git log --before "$day 0:00:00 PDT" -1 --format=%H`
+lastofday=`git log --before "$day 23:59:59 PDT" -1 --format=%H sherlock.xml`
+priorday=`git log --before "$day 0:00:00 PDT" -1 --format=%H sherlock.xml`
 git show $lastofday:sherlock.xml > ../lastofday.xml
 git show $priorday:sherlock.xml > ../priorday.xml
 
 echo "DIFFERENCES BETWEEN"
-git log --format=%s -1 $priorday
+git log --format=%s -1 $priorday sherlock.xml
 echo "    AND"
-git log --format=%s -1 $lastofday
+git log --format=%s -1 $lastofday sherlock.xml
 
 cd ..
 repo diffmanifests `pwd`/priorday.xml `pwd`/lastofday.xml
